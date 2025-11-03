@@ -1,13 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { Form } from './src/components/form';
-import LoginScreen from './src/screens';
-//https://dontpad.com/carloswgama
-//npx expo start --tunnel
-//npm start
-//https://expo.dev/
-export default function App() {
+
+
+export default function LoginScreen() {
 
   const [ email, setEmail ] = useState<string>('');
   const [ senha, setSenha ] = useState<string>('');
@@ -23,7 +19,31 @@ export default function App() {
   }
   // ------------------------------------------------
   return (
-    <LoginScreen />
+    <View style={styles.container}>
+      
+      {/* FORMULÁRIO */}
+      <View style={styles.loginContainer}>
+        <Text style={{fontSize: 30, textAlign: 'center'}}>Meu APP</Text>
+        {/* LOGIN */}
+        <Text style={styles.text}>Login</Text>
+        <TextInput 
+          onChangeText={setEmail}
+          style={styles.textInput} 
+          placeholder='Digite seu email' />
+
+        {/* SENHA */}
+        <Text style={styles.text}>Senha</Text>
+        <TextInput style={styles.textInput}
+          onChangeText={setSenha}
+          secureTextEntry  placeholder='Digite sua senha'/>
+
+        { error && <Text>{error}</Text>}
+        {/* BOTÃO */}
+        <Button title="Entrar" onPress={handleLogin} />
+      </View>
+
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
