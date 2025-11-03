@@ -1,3 +1,4 @@
+import { Link, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
@@ -11,7 +12,9 @@ export default function LoginScreen() {
   // ------------------------------------------------
   const handleLogin = () => {
     if (email == 'teste@teste.com' && senha == '123456') {
-      setError(false);
+      router.push('/auth/tela1');
+      // router.replace('/auth/tela1');
+      // router.back();
     } else {
       setError('Email ou senha incorretos!');
     }
@@ -40,6 +43,10 @@ export default function LoginScreen() {
         { error && <Text>{error}</Text>}
         {/* BOTÃO */}
         <Button title="Entrar" onPress={handleLogin} />
+
+        <Link href="/auth/tela2">
+          <Text>VÁ PARA TERLA 2</Text>
+        </Link>
       </View>
 
       <StatusBar style="auto" />
