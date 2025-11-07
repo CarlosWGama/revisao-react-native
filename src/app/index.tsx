@@ -11,13 +11,11 @@ export default function LoginScreen() {
   const [ error, setError ] = useState<false|string>(false);
   // ------------------------------------------------
   const handleLogin = () => {
-    if (email == 'teste@teste.com' && senha == '123456') {
+    //if (email == 'teste@teste.com' && senha == '123456') {
       router.push('/auth/tela1');
-      // router.replace('/auth/tela1');
-      // router.back();
-    } else {
-      setError('Email ou senha incorretos!');
-    }
+    //} else {
+//      setError('Email ou senha incorretos!');
+  //  }
       
   }
   // ------------------------------------------------

@@ -8,7 +8,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
-     "experiments": {
+    "experiments": {
       "typedRoutes": true
     },
     "splash": {
@@ -25,13 +25,18 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.carloswgama.aula1"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
-    ]
+      "expo-router",
+      "expo-font"
+    ],
+    "extra": {
+      "router": {}
+    }
   }
 }

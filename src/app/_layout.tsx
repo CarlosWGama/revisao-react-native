@@ -11,7 +11,7 @@ export default function Layout() {
             <Stack.Screen name="index" options={{ 
                 title: "Login"
             }} />
-            <Stack.Screen name="auth/tela1" options={{ 
+            <Stack.Screen name="auth" options={{ 
                 title: "Home"
             }} />
         </Stack>
