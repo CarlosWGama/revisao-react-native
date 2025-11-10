@@ -1,30 +1,31 @@
 import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Button, TextInput, FlatList, Pressable, Alert } from 'react-native';
+import axios from 'axios';
+import { ItensService } from '../../services/itens';
 
-// https://restful-api.dev/
+
+// https://www.npmjs.com/package/json-server
 export default function Tela3Screen() {
 
   const [ itens, setItens ] = useState<any[]>([]);
   const [ titulo, setTitulo ] = useState<string>('');
   // =======================================
   const buscarItem = async () => {
-    setItens([
-      {titulo: 'Item A', id:"12312"},
-      {titulo: 'Item B', id: '111'},
-      {titulo: 'Item C', id: "333"}
-    ])
+    setItens(await ItensService.getAll()) 
   }
   // ----------------------
   const handleCadastrar = async() => {
-    setItens([...itens, {titulo, id: Math.random().toString()}]);
+    await ItensService.create({titulo});
+    await buscarItem();
     setTitulo('');
   }
   // ------------------------
   const removeItem = async(item: any) => {
     Alert.alert('Remover item', 'Deseja realmente remover o item?', [
       { text: 'Sim',
-        onPress: () => {
-          setItens(itens.filter(i => i.id !== item.id));
+        onPress: async () => {
+          await ItensService.delete(item.id);
+          await buscarItem();
         }
       },
       { text: 'Não'}
